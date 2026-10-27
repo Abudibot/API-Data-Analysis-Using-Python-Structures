@@ -1,19 +1,21 @@
 # Day 1 - API Data Analysis Using Python Structures 
-Fetches 10 customers from the JSONPlaceholder Users API, flattens the nested data, analyses it with plain Python (lists, dicts, sets, loops), and saves CSVs and a chart. 
-
-## What it produces 
-- 'output/customers.csv': one flat row per customer 
-- 'output/city_counts.csv': customers per city (sorted by count, then city) 
-- 'output/customer_distributiony.png': bar chart of customers per email domain 
-- 'Console findings: customers retrieved, unique cities, most common city, email domains 
+Fetches 10 customers from the JSONPlaceholder Users API with 'requests', flatten the nested address, geo and company objects into one row per customer, then analyse with plain Python (sets for unique cities, loops and dicts for counts). Results are saved with pandas and plotted with matplotlib.
 
 ## How to run 
 ''' 
 python -m venv .venv 
 source .venv/Scripts/activate 
 pip install -r requirements.txt 
-python starter.py 
+python analysis.py 
 ''' 
+Outputs are written to the 'output/' folder
 
-## Tools 
-Python, requests, pandas, matplotlib
+## Findings
+- 10 customers were retrieved and all 10 live in different cities, so no city has more than one customer.
+- The most common email domain is .biz; the other domains appear less often. 
+- The chart shows how customers are spread across email domains. 
+
+## Assumptions 
+- The email domain means the part after the last dot (e.g biz, tv). 
+- Ties for most common city are broken alphabetically. 
+- The API is available and returns 10 records.
